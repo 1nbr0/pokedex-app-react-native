@@ -1,10 +1,12 @@
 import { Layout } from "./src/components/Layout";
 import { StyleSheet, Text } from "react-native";
+import { Header } from "./src/components/Header";
 
 export default function App() {
   return (
     <Layout>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Header />
+      <Text>Pokedex App, ici la vue App.js</Text>
     </Layout>
   );
 }
