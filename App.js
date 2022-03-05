@@ -1,4 +1,5 @@
 import { Layout } from "./src/components/Layout";
+import { StyleSheet, Text } from "react-native";
 
 export default function App() {
   return (
