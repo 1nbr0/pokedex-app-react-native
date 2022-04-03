@@ -1,5 +1,4 @@
 import { Layout } from "./src/components/Layout";
-import { Text } from "react-native";
 import { Header } from "./src/components/Header";
 import * as eva from "@eva-design/eva";
 import { ApplicationProvider } from "@ui-kitten/components";
@@ -14,7 +13,7 @@ import {
   Modal,
   Pressable,
 } from "react-native";
-import { HomeScreen } from "./src/screens/HomeScreen";
+import { PokemonsScreen } from "./src/assets/screens/PokemonsScreen";
 
 export default function App() {
   return (
@@ -61,7 +60,7 @@ const Root = () => {
     );
   }
 
-  return currentUser !== null ? <HomeScreen /> : <LoginScreen />;
+  return currentUser !== null ? <PokemonsScreen /> : <LoginScreen />;
 };
 
 const styles = StyleSheet.create({
