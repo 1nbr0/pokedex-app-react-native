@@ -1,17 +1,22 @@
 import { Layout } from "./src/components/Layout";
-// import { Text } from "react-native";
 import { Header } from "./src/components/Header";
 import * as eva from "@eva-design/eva";
 import { ApplicationProvider } from "@ui-kitten/components";
-import { PokemonsScreen } from "./src/assets/screens/PokemonsScreen";
+import { PokemonProvider } from "./src/assets/contexts/pokemonProvider";
+import { NavigationContainer } from "@react-navigation/native";
+import { TabNavigator } from "./src/assets/navigators/TabNavigator";
 
 export default function App() {
   return (
-    <ApplicationProvider {...eva} theme={eva.light}>
-      <Layout>
-        <Header />
-        <PokemonsScreen />
-      </Layout>
-    </ApplicationProvider>
+    <NavigationContainer>
+      <ApplicationProvider {...eva} theme={eva.light}>
+        <PokemonProvider>
+          <Layout>
+            <Header />
+            <TabNavigator />
+          </Layout>
+        </PokemonProvider>
+      </ApplicationProvider>
+    </NavigationContainer>
   );
 }
