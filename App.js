@@ -5,7 +5,7 @@ import { ApplicationProvider } from "@ui-kitten/components";
 import { AuthProvider, useAuth } from "./src/context/AuthProvider";
 import { LoginScreen } from "./src/screens/LoginScreen";
 
-import React, { useState } from "react";
+import React from "react";
 import {
   StyleSheet,
   ActivityIndicator,
@@ -13,15 +13,16 @@ import {
   Modal,
   Pressable,
 } from "react-native";
-import { PokemonsScreen } from "./src/assets/screens/PokemonsScreen";
 
 export default function App() {
   return (
     <ApplicationProvider {...eva} theme={eva.light}>
       <AuthProvider>
         <Layout>
-          <Header />
-          <Root />
+          <NavigationContainer>
+            <Header />
+            <Root />
+          </NavigationContainer>
         </Layout>
       </AuthProvider>
     </ApplicationProvider>
@@ -60,7 +61,13 @@ const Root = () => {
     );
   }
 
-  return currentUser !== null ? <PokemonsScreen /> : <LoginScreen />;
+  return currentUser !== null ? (
+  <PokemonProvider>
+    <TabNavigator />
+  </PokemonProvider>
+  ) : (
+  <LoginScreen />
+  );
 };
 
 const styles = StyleSheet.create({
