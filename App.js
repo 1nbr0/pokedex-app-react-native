@@ -3,14 +3,115 @@ import { Text } from "react-native";
 import { Header } from "./src/components/Header";
 import * as eva from "@eva-design/eva";
 import { ApplicationProvider } from "@ui-kitten/components";
+import { AuthProvider, useAuth } from "./src/context/AuthProvider";
+import { LoginScreen } from "./src/screens/LoginScreen";
+
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  ActivityIndicator,
+  View,
+  Modal,
+  Pressable,
+} from "react-native";
+import { HomeScreen } from "./src/screens/HomeScreen";
 
 export default function App() {
   return (
     <ApplicationProvider {...eva} theme={eva.light}>
-      <Layout>
-        <Header />
-        <Text>Pokedex App, ici la vue App.js</Text>
-      </Layout>
+      <AuthProvider>
+        <Layout>
+          <Header />
+          <Root />
+        </Layout>
+      </AuthProvider>
     </ApplicationProvider>
   );
 }
+
+const Root = () => {
+  const auth = useAuth();
+  const { currentUser, loading, error, cleanError } = auth;
+
+  if (error) {
+    return (
+      <View>
+        <Modal animationType="slide" transparent={true} visible={true}>
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <Text style={styles.modalText}>{error}</Text>
+              <Pressable
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => cleanError()}
+              >
+                <Text style={styles.textStyle}>EXIT</Text>
+              </Pressable>
+            </View>
+          </View>
+        </Modal>
+      </View>
+    );
+  }
+
+  if (loading) {
+    return (
+      <View style={styles.spinnerContainer}>
+        <ActivityIndicator size="large" color={"red"} />
+      </View>
+    );
+  }
+
+  return currentUser !== null ? <HomeScreen /> : <LoginScreen />;
+};
+
+const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+  },
+  image: {
+    opacity: 0.1,
+  },
+  spinnerContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+  },
+  buttonClose: {
+    backgroundColor: "red",
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center",
+  },
+});

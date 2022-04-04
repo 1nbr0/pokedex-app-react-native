@@ -11,6 +11,9 @@ import {
 import PokedexLogo from "../icons/PokedexLogo";
 import { MaterialIcons, Feather } from "@expo/vector-icons";
 
+import { useAuth, currentUser } from "../context/AuthProvider";
+import { auth } from "../../firebase-config";
+
 const MenuIcon = () => <Feather name="more-vertical" size={24} color="white" />;
 
 const LogoutIcon = () => (
@@ -19,6 +22,7 @@ const LogoutIcon = () => (
 
 export const Header = () => {
   const [menuVisible, setMenuVisible] = useState(false);
+  const { logout } = useAuth();
 
   const toggleMenu = () => {
     setMenuVisible(!menuVisible);
@@ -36,7 +40,21 @@ export const Header = () => {
         backdropStyle={styles.backdrop}
         onBackdropPress={toggleMenu}
       >
-        <MenuItem accessoryLeft={LogoutIcon} title="Logout" />
+        <MenuItem
+          accessoryLeft={LogoutIcon}
+          title="Logout"
+          onPress={() => {
+            logout();
+          }}
+        />
+        <MenuItem
+          title="Delete Account"
+          onPress={() => {
+            auth.currentUser.delete();
+            alert("Compte supprimé");
+            logout();
+          }}
+        />
       </OverflowMenu>
     </React.Fragment>
   );
