@@ -15,7 +15,13 @@ export const PokemonNavigator = () => {
           headerShown: false,
         }}
       />
-      <Stack.Screen name={ROUTES.POKEMON} component={PokemonDetailsScreen} />
+      <Stack.Screen
+        name={ROUTES.POKEMON}
+        component={PokemonDetailsScreen}
+        options={{
+          headerTransparent: true,
+        }}
+      />
     </Stack.Navigator>
   );
 };

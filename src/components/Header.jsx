@@ -73,5 +73,7 @@ const styles = StyleSheet.create({
   },
   light: {
     color: "white",
+    fontWeight: "bold",
+    fontSize: 26,
   },
 });

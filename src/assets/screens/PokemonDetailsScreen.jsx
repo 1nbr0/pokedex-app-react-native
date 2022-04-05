@@ -6,10 +6,14 @@ export const PokemonDetailsScreen = () => {
   const route = useRoute();
 
   return (
-    <View>
+    <View style={styles.containerDetailsPokemon}>
       <Text>here pokemon details</Text>
     </View>
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  containerDetailsPokemon: {
+    marginTop: 50,
+  },
+});
