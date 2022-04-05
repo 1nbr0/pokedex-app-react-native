@@ -12,12 +12,16 @@ export const Tags = ({ type }) => {
 
 const styles = StyleSheet.create({
   tag: {
-    borderRadius: 5,
+    borderRadius: 60,
     marginRight: 5,
     marginTop: 2,
     padding: 6,
   },
   type: {
+    paddingHorizontal: 10,
+    fontWeight: "bold",
+    fontSize: 16,
+    textAlign: "center",
     textTransform: "capitalize",
     color: "white",
   },

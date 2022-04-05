@@ -39,19 +39,19 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   id: {
-    fontSize: 14,
+    fontSize: 16,
     color: "rgba(23, 23, 27, 0.6)",
   },
   title: {
     fontSize: 26,
     fontWeight: "bold",
-    color: "black",
+    color: "white",
     textTransform: "capitalize",
   },
   imageContainer: {
     position: "absolute",
     top: 0,
-    right: 5,
+    right: 15,
   },
   image: {
     width: 100,

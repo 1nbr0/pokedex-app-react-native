@@ -20,20 +20,24 @@ const colors = {
 };
 
 const backgroundColors = {
-  fire: "#FDDFDF",
-  grass: "#DEFDE0",
-  electric: "#FCF7DE",
-  water: "#DEF3FD",
-  ground: "#f4e7da",
-  rock: "#d5d5d4",
-  fairy: "#fceaff",
-  poison: "#98d7a5",
-  bug: "#f8d5a3",
-  dragon: "#97b3e6",
-  psychic: "#eaeda1",
-  flying: "#F5F5F5",
-  fighting: "#E6E0D4",
-  normal: "#F5F5F5",
+  bug: "#8BD674",
+  dark: "#6F6E78",
+  dragon: "#7383B9",
+  electric: "#F2CB55",
+  fairy: "#EBA8C3",
+  fighting: "#EB4971",
+  fire: "#FFA756",
+  flying: "#83A2E3",
+  ghost: "#8571BE",
+  grass: "#8BBE8A",
+  ground: "#F78551",
+  ice: "#91D8DF",
+  normal: "#B5B9C4",
+  poison: "#9F6E97",
+  psychic: "#FF6568",
+  rock: "#D4C294",
+  steel: "#4C91B2",
+  water: "#58ABF6",
 };
 
 export { colors, backgroundColors };
