@@ -15,13 +15,11 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // const [initialLoading, setInitialLoading] = useState(true);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
       setLoading(false);
-      // setInitialLoading(false)
     });
     return () => unsubscribe();
   }, []);
@@ -53,14 +51,12 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     setLoading(true);
-    // setCurrentUser(null);
     signOut(auth).catch((error) => {
       handleError(error);
     });
   };
 
   const forgotPassword = (email) => {
-    // console.log("reset email sent to " + Email);
     sendPasswordResetEmail(auth, email, null).catch((error) => {
       handleError(error);
     });

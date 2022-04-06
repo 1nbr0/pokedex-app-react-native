@@ -1,12 +1,11 @@
 import { Layout } from "./src/components/Layout";
-import { Text } from "react-native";
 import { Header } from "./src/components/Header";
 import * as eva from "@eva-design/eva";
 import { ApplicationProvider } from "@ui-kitten/components";
 import { AuthProvider, useAuth } from "./src/context/AuthProvider";
 import { LoginScreen } from "./src/screens/LoginScreen";
 
-import React, { useState } from "react";
+import React from "react";
 import {
   StyleSheet,
   ActivityIndicator,
@@ -14,21 +13,24 @@ import {
   Modal,
   Pressable,
 } from "react-native";
-import { HomeScreen } from "./src/screens/HomeScreen";
+import { PokemonProvider } from "./src/assets/contexts/pokemonProvider";
+import { NavigationContainer } from "@react-navigation/native";
+import { TabNavigator } from "./src/assets/navigators/TabNavigator";
 
 export default function App() {
   return (
     <ApplicationProvider {...eva} theme={eva.light}>
       <AuthProvider>
         <Layout>
-          <Header />
-          <Root />
+          <NavigationContainer>
+            <Header />
+            <Root />
+          </NavigationContainer>
         </Layout>
       </AuthProvider>
     </ApplicationProvider>
   );
 }
-
 const Root = () => {
   const auth = useAuth();
   const { currentUser, loading, error, cleanError } = auth;
@@ -61,7 +63,13 @@ const Root = () => {
     );
   }
 
-  return currentUser !== null ? <HomeScreen /> : <LoginScreen />;
+  return currentUser !== null ? (
+  <PokemonProvider>
+    <TabNavigator />
+  </PokemonProvider>
+  ) : (
+  <LoginScreen />
+  );
 };
 
 const styles = StyleSheet.create({
