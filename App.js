@@ -13,6 +13,9 @@ import {
   Modal,
   Pressable,
 } from "react-native";
+import { PokemonProvider } from "./src/assets/contexts/pokemonProvider";
+import { NavigationContainer } from "@react-navigation/native";
+import { TabNavigator } from "./src/assets/navigators/TabNavigator";
 
 export default function App() {
   return (
@@ -28,7 +31,6 @@ export default function App() {
     </ApplicationProvider>
   );
 }
-
 const Root = () => {
   const auth = useAuth();
   const { currentUser, loading, error, cleanError } = auth;
