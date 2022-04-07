@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, Pressable, TextInput } from "react-native";
 import React, { useState } from "react";
-import { useAuth } from "../context/AuthProvider";
+import { useAuth } from "../contexts/AuthProvider";
 
 export const LoginScreen = () => {
   const { register, login, forgotPassword } = useAuth();
@@ -45,7 +45,7 @@ export const LoginScreen = () => {
           forgotPassword(email);
         }}
       >
-        Mot de passe oublié
+        Mot de passe oublié ?
       </Text>
     </View>
   );
@@ -65,25 +65,25 @@ const styles = StyleSheet.create({
   input: {
     borderWidth: 1,
     borderColor: "#ccc",
+    borderRadius: 15,
     backgroundColor: "white",
     padding: 8,
     marginTop: 30,
-    marginRight: 40,
-    marginLeft: 40,
+    marginHorizontal: 40,
   },
   login: {
     alignItems: "center",
     backgroundColor: "#88071c",
+    borderRadius: 20,
     marginTop: 40,
-    marginLeft: 100,
-    marginRight: 100,
+    marginHorizontal: 100,
   },
   register: {
     alignItems: "center",
     backgroundColor: "black",
+    borderRadius: 20,
     marginTop: 20,
-    marginLeft: 100,
-    marginRight: 100,
+    marginHorizontal: 100,
   },
   loginText: {
     color: "white",

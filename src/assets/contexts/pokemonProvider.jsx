@@ -8,7 +8,7 @@ export const PokemonProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   const api = axios.create({
-    baseURL: "https://pokeapi.co/api/v2",
+    baseURL: "https://pokeapi.co/api/v2/pokemon",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
@@ -18,7 +18,7 @@ export const PokemonProvider = ({ children }) => {
 
   const getPokemonsList = async () => {
     let pokemonArray = [];
-    for (let i = 1; i < 152; i++) {
+    for (let i = 1; i < 401; i++) {
       pokemonArray.push(await getPokemonsById(i));
     }
     setLoading(true);
@@ -28,7 +28,7 @@ export const PokemonProvider = ({ children }) => {
 
   const getPokemonsById = async (id) => {
     try {
-      const res = await api.get(`/pokemon/${id}`);
+      const res = await api.get(`/${id}`);
       return res;
     } catch (error) {
       console.error(error);

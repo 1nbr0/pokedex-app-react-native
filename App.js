@@ -2,14 +2,15 @@ import { Layout } from "./src/components/Layout";
 import { Header } from "./src/components/Header";
 import * as eva from "@eva-design/eva";
 import { ApplicationProvider } from "@ui-kitten/components";
-import { AuthProvider, useAuth } from "./src/context/AuthProvider";
-import { LoginScreen } from "./src/screens/LoginScreen";
+import { AuthProvider, useAuth } from "./src/assets/contexts/AuthProvider";
+import { LoginScreen } from "./src/assets/screens/LoginScreen";
 
 import React from "react";
 import {
   StyleSheet,
   ActivityIndicator,
   View,
+  Text,
   Modal,
   Pressable,
 } from "react-native";
@@ -23,7 +24,6 @@ export default function App() {
       <AuthProvider>
         <Layout>
           <NavigationContainer>
-            <Header />
             <Root />
           </NavigationContainer>
         </Layout>
@@ -58,27 +58,22 @@ const Root = () => {
   if (loading) {
     return (
       <View style={styles.spinnerContainer}>
-        <ActivityIndicator size="large" color={"red"} />
+        <ActivityIndicator size="large" color={"#88071c"} />
       </View>
     );
   }
 
   return currentUser !== null ? (
-  <PokemonProvider>
-    <TabNavigator />
-  </PokemonProvider>
+    <PokemonProvider>
+      <Header />
+      <TabNavigator />
+    </PokemonProvider>
   ) : (
-  <LoginScreen />
+    <LoginScreen />
   );
 };
 
 const styles = StyleSheet.create({
-  background: {
-    flex: 1,
-  },
-  image: {
-    opacity: 0.1,
-  },
   spinnerContainer: {
     flex: 1,
     justifyContent: "center",
@@ -111,7 +106,7 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   buttonClose: {
-    backgroundColor: "red",
+    backgroundColor: "#88071c",
   },
   textStyle: {
     color: "white",

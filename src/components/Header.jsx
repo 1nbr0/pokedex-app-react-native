@@ -10,8 +10,7 @@ import {
 } from "@ui-kitten/components";
 import PokedexLogo from "../icons/PokedexLogo";
 import { MaterialIcons, Feather } from "@expo/vector-icons";
-
-import { useAuth, currentUser } from "../context/AuthProvider";
+import { useAuth } from "../assets/contexts/AuthProvider";
 import { auth } from "../../firebase-config";
 
 const MenuIcon = () => <Feather name="more-vertical" size={24} color="white" />;
@@ -22,7 +21,7 @@ const LogoutIcon = () => (
 
 export const Header = () => {
   const [menuVisible, setMenuVisible] = useState(false);
-  const { logout } = useAuth();
+  const { logout, currentUser } = useAuth();
 
   const toggleMenu = () => {
     setMenuVisible(!menuVisible);
