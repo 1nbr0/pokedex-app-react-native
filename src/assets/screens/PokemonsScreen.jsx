@@ -41,7 +41,7 @@ export const PokemonsScreen = () => {
 
 const styles = StyleSheet.create({
   containerCard: {
-    padding: 20,
+    paddingVertical: 20,
   },
   spinnerContainer: {
     flex: 1,

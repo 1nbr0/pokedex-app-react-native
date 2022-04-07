@@ -33,10 +33,18 @@ export const PokemonCardInfo = ({ pokemon, id, name, type }) => {
 
 const styles = StyleSheet.create({
   card: {
-    marginVertical: 12,
+    margin: 12,
     padding: 10,
     flexDirection: "row",
     borderRadius: 10,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 3,
+      height: 5,
+    },
+    shadowOpacity: 1,
+    shadowRadius: 5,
+    elevation: 10,
   },
   id: {
     fontSize: 16,
