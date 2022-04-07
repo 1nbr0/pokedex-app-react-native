@@ -22,6 +22,7 @@ export const TabNavigator = () => {
         tabBarStyle: {
           position: "absolute",
           height: 55,
+          borderTopWidth: 0,
         },
       })}
     >
@@ -33,7 +34,7 @@ export const TabNavigator = () => {
             <MaterialCommunityIcons name="pokeball" color={color} size={size} />
           ),
         }}
-        name={ROUTES.POKEDEX}
+        name={ROUTES.HOME}
         component={PokemonNavigator}
       />
       <Tab.Screen

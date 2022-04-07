@@ -2,7 +2,15 @@ import React from "react";
 import { Tags } from "../../components/Tags";
 import { useRoute } from "@react-navigation/native";
 import { backgroundColors, colors } from "../../assets/colors";
-import { Text, StyleSheet, View, Image, SafeAreaView } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  View,
+  Image,
+  SafeAreaView,
+  Pressable,
+} from "react-native";
+import { AntDesign } from "@expo/vector-icons";
 
 export const PokemonDetailsScreen = () => {
   const route = useRoute();
@@ -201,6 +209,11 @@ export const PokemonDetailsScreen = () => {
             </View>
           </View>
         </View>
+        <Pressable
+          style={{ ...styles.addButton, backgroundColor: `${backgroundColor}` }}
+        >
+          <AntDesign name="plus" style={styles.addButtonText} />
+        </Pressable>
       </SafeAreaView>
     </>
   );
@@ -253,5 +266,28 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     width: "95%",
     height: "61%",
+  },
+  addButton: {
+    position: "absolute",
+    right: "10%",
+    bottom: "54%",
+    width: 50,
+    height: 50,
+    borderRadius: 50,
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+    elevation: 6,
+  },
+  addButtonText: {
+    color: "white",
+    fontSize: 35,
+    lineHeight: 50,
   },
 });

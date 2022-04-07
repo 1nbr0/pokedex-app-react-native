@@ -1,5 +1,6 @@
 import React from "react";
 import { View, ActivityIndicator, StyleSheet, FlatList } from "react-native";
+import { backgroundColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 import { PokemonCardInfo } from "../../components/PokemonCardInfo";
 import { usePokemon } from "../contexts/pokemonProvider";
 
@@ -9,7 +10,7 @@ export const PokemonsScreen = () => {
   if (loading) {
     return (
       <View style={styles.spinnerContainer}>
-        <ActivityIndicator size="large" color="red" />
+        <ActivityIndicator size="large" color="#88071c" />
       </View>
     );
   }
@@ -18,6 +19,10 @@ export const PokemonsScreen = () => {
       <View style={styles.containerCard}>
         <FlatList
           keyExtractor={(item) => item.data.id}
+          onEndReachedThreshold={0.5}
+          onEndReached={() => {
+            console.log("onEndReached");
+          }}
           showsVerticalScrollIndicator={false}
           data={pokemons}
           renderItem={({ item }) => (
@@ -36,7 +41,7 @@ export const PokemonsScreen = () => {
 
 const styles = StyleSheet.create({
   containerCard: {
-    padding: 20,
+    paddingVertical: 20,
   },
   spinnerContainer: {
     flex: 1,

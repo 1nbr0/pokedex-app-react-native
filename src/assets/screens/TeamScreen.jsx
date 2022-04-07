@@ -1,10 +1,23 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, View, FlatList, StyleSheet } from "react-native";
+import { PokemonCardTeam } from "../../components/PokemonCardTeam";
 
 export const TeamScreen = () => {
+  const pokemonInTeam = [1, 2, 3, 4, 5, 6];
   return (
     <View>
-      <Text>Team Pokemon Screen</Text>
+      <FlatList
+        style={styles.containerCardTeam}
+        showsVerticalScrollIndicator={false}
+        data={pokemonInTeam}
+        renderItem={(item) => <PokemonCardTeam />}
+      />
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  containerCardTeam: {
+    flexDirection: "row",
+  },
+});
