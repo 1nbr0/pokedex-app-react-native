@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Tags } from "../../components/Tags";
 import { useRoute } from "@react-navigation/native";
 import { backgroundColors, colors } from "../../assets/colors";
@@ -9,6 +9,8 @@ import {
   Image,
   SafeAreaView,
   Pressable,
+  Modal,
+  Button,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
@@ -43,6 +45,8 @@ export const PokemonDetailsScreen = () => {
       />
     );
   };
+
+  const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <>
@@ -209,8 +213,30 @@ export const PokemonDetailsScreen = () => {
             </View>
           </View>
         </View>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={modalVisible}
+          // onRequestClose={() => setModalVisible(false)}
+        >
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <Text style={styles.modalText}>Ajouter à l'équipe ?</Text>
+              <Pressable
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => setModalVisible(false)}
+              >
+                <Text style={styles.textStyle}>Annuler</Text>
+              </Pressable>
+              <Pressable style={[styles.button, styles.buttonAdd]}>
+                <Text style={styles.textStyle}>Ajouter</Text>
+              </Pressable>
+            </View>
+          </View>
+        </Modal>
         <Pressable
           style={{ ...styles.addButton, backgroundColor: `${backgroundColor}` }}
+          onPress={() => setModalVisible(true)}
         >
           <AntDesign name="plus" style={styles.addButtonText} />
         </Pressable>
@@ -289,5 +315,46 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 35,
     lineHeight: 50,
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22,
+  },
+  modalView: {
+    margin: 20,
+    borderRadius: 20,
+    padding: 35,
+    backgroundColor: "white",
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+  },
+  buttonClose: {
+    backgroundColor: "#88071c",
+  },
+  buttonAdd: {
+    backgroundColor: "blue",
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center",
   },
 });

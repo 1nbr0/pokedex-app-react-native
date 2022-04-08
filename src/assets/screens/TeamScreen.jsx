@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, FlatList, StyleSheet } from "react-native";
+import { View, FlatList, StyleSheet } from "react-native";
 import { PokemonCardTeam } from "../../components/PokemonCardTeam";
 
 export const TeamScreen = () => {
